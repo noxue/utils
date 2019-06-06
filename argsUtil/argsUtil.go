@@ -1,4 +1,3 @@
-
 package argsUtil
 
 import (
@@ -16,7 +15,8 @@ args参数是要转换的不定参数
  */
 func NewArgsUtil(args ...interface{}) *argUtil {
 	return &argUtil{
-		srcArgs: args,
+		// 此处用append，主要是解决args不定参数再次被传递的时候，只会当做一个参数，会导致参数个数不一致
+		srcArgs: append([]interface{}{}, args...),
 	}
 }
 
