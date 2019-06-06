@@ -13,17 +13,21 @@ type argUtil struct {
 
 /*
 args参数是要转换的不定参数
+要特别注意：args如果也是来自于不定参数，那么调用的时候需要这样调用 NewArgsUtil(args...)，否则会导致参数个数不对
  */
 func NewArgsUtil(args ...interface{}) *argUtil {
-	return &argUtil{
-		srcArgs: append([]interface{},args...),
+	as:=&argUtil{
+		srcArgs: args,
 	}
+	return as
 }
 
 /*
 转换到指定的类型
 
-特别要注意，要传入变量的引用，否则无法给变量填充值
+特别要注意：
+要传入变量的引用，否则无法给变量填充值。
+
 
 如果提示错误：gob: attempt to decode into a non-pointer 就表示你提供的参数中有的不是变量的引用
   */
