@@ -60,3 +60,23 @@ func TestArgUtil_To(t *testing.T) {
 	fmt.Println()
 	fmt.Println("data:","\n",&d)
 }
+
+
+type A  struct {
+	str string
+}
+
+func (A)fn1(){
+
+}
+
+
+type B struct {
+	A
+	n int
+}
+
+func TestName(t *testing.T) {
+	var b B
+	b.fn1()
+}
